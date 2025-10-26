@@ -1,0 +1,51 @@
+name: Server CI
+
+on:
+  push:
+    paths:
+      - 'server/**'
+      - '.github/workflows/server-ci.yml'
+  pull_request:
+    paths:
+      - 'server/**'
+      - '.github/workflows/server-ci.yml'
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'yarn'
+          cache-dependency-path: 'server/yarn.lock'
+
+      - name: Install dependencies
+        working-directory: server
+        run: |
+          yarn install --frozen-lockfile
+
+      - name: Lint
+        working-directory: server
+        run: |
+          yarn lint
+
+      - name: Run unit tests
+        working-directory: server
+        run: |
+          yarn test --runInBand
+
+      - name: Run e2e tests
+        working-directory: server
+        run: |
+          yarn test:e2e
+
+      - name: Build
+        working-directory: server
+        run: |
+          yarn build

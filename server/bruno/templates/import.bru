@@ -1,0 +1,17 @@
+meta {
+  name: "导入模板"
+  type: "http"
+  seq: 20
+}
+
+post {
+  url: {{base_url}}/api/v1/templates/:templateId/import
+}
+
+params:path {
+  templateId: replace-with-template-id
+}
+
+headers {
+  Authorization: Bearer {{access_token}}
+}

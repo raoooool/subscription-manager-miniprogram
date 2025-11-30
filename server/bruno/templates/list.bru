@@ -1,0 +1,13 @@
+meta {
+  name: "模板列表"
+  type: "http"
+  seq: 10
+}
+
+get {
+  url: {{base_url}}/api/v1/templates
+}
+
+headers {
+  Authorization: Bearer {{access_token}}
+}

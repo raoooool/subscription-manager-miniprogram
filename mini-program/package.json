@@ -1,0 +1,13 @@
+{
+  "name": "@guasubscription/mini-program",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "echo \"Open the project in WeChat DevTools to run.\"",
+    "build": "echo \"Use WeChat DevTools for production builds.\"",
+    "typecheck": "tsc --noEmit --project tsconfig.json"
+  },
+  "devDependencies": {
+    "miniprogram-api-typings": "^3.12.0"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "CommonJS",
+    "lib": ["ES2015", "DOM"],
+    "types": ["miniprogram-api-typings"],
+    "baseUrl": "./miniprogram",
+    "paths": {
+      "*": ["*", "typings/*"]
+    },
+    "strict": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true
+  },
+  "include": ["miniprogram/**/*.ts"],
+  "exclude": ["node_modules"]
+}

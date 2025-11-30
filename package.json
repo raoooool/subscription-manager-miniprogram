@@ -1,0 +1,18 @@
+{
+  "name": "subscription-manager",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "yarn@1.22.19",
+  "scripts": {
+    "server:dev": "yarn workspace @guasubscription/server start:dev",
+    "server:lint": "yarn workspace @guasubscription/server lint",
+    "server:test": "yarn workspace @guasubscription/server test",
+    "mini-program:dev": "yarn workspace @guasubscription/mini-program dev",
+    "mini-program:build": "yarn workspace @guasubscription/mini-program build",
+    "mini-program:typecheck": "yarn workspace @guasubscription/mini-program typecheck"
+  },
+  "workspaces": [
+    "server",
+    "mini-program"
+  ]
+}

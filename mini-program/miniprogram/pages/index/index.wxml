@@ -1,0 +1,15 @@
+<view class="page">
+  <view class="hero">
+    <text class="eyebrow">WeChat Mini Program</text>
+    <text class="title">订阅管理</text>
+    <text class="subtitle">基础框架已就绪，可在此扩展业务页面与组件。</text>
+  </view>
+  <view class="card">
+    <text class="card-title">接下来可以做什么？</text>
+    <view class="card-body">
+      <text>1. 连接后端 API。</text>
+      <text>2. 补充页面与组件结构。</text>
+      <text>3. 引入状态管理与主题样式。</text>
+    </view>
+  </view>
+</view>

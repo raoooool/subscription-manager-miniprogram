@@ -1,0 +1,146 @@
+<view class="page nb-shell font-sans form-page">
+  <view class="nb-blob nb-blob-a"></view>
+  <view class="nb-blob nb-blob-b"></view>
+  <view class="nb-blob nb-blob-c"></view>
+
+  <view class="nb-card hero-card form-hero">
+    <view class="hero-left">
+      <view class="nb-pill dark">Neo·Brutalism Form</view>
+      <text class="title">添加新的订阅</text>
+      <text class="subtitle">引用 Button / Input / Card 组合重构表单，保持厚边框、饱和色块与跳跃阴影。</text>
+      <view class="hero-actions">
+        <view class="nb-button ghost">组件参考</view>
+        <view class="nb-button secondary" bindtap="onSubmit">快速保存</view>
+      </view>
+      <view class="hero-tags">
+        <view class="nb-tag alt">下次 {{nextBilling}}</view>
+        <view class="nb-tag warn">提醒 {{reminderDays}} 天</view>
+        <view class="nb-tag ghost">{{autopay ? '自动扣款' : '手动支付'}}</view>
+      </view>
+    </view>
+
+    <view class="hero-right nb-surface preview-card">
+      <view class="panel-header">
+        <text class="panel-title">实时预览</text>
+        <view class="pill subtle">Card + Tag</view>
+      </view>
+      <view class="summary-row">
+        <view class="summary-name">{{name || '未命名订阅'}} · {{cycleLabel}}</view>
+        <view class="amount-chip">{{currency}}{{amount || '0.00'}}</view>
+      </view>
+      <view class="summary-meta">
+        <text>起始 {{startDate || '待选择'}} · 下次 {{nextBilling}}</text>
+        <text>提醒 {{reminderDays}} 天 · {{autopay ? '自动扣款' : '手动支付'}}</text>
+      </view>
+      <view class="note-chip" wx:if="{{notes}}">{{notes}}</view>
+    </view>
+  </view>
+
+  <view class="form-grid">
+    <view class="nb-card section form-card">
+      <view class="section-header">
+        <text class="section-title">基础信息</text>
+        <view class="pill subtle">Input 组件</view>
+      </view>
+      <view class="field">
+        <view class="label">订阅名称</view>
+        <input
+          class="nb-input"
+          placeholder="如：Spotify、Notion 或腾讯视频"
+          value="{{name}}"
+          bindinput="onNameInput"
+        />
+        <text class="hint">用于列表展示与提醒标题</text>
+      </view>
+      <view class="field">
+        <view class="label">金额</view>
+        <view class="amount-row">
+          <view class="currency">{{currency}}</view>
+          <input
+            class="nb-input"
+            type="digit"
+            placeholder="0.00"
+            value="{{amount}}"
+            bindinput="onAmountInput"
+          />
+        </view>
+        <text class="hint">展示 Tag + Input 的组合，保持厚边框与投影。</text>
+      </view>
+    </view>
+
+    <view class="nb-card section form-card">
+      <view class="section-header">
+        <text class="section-title">扣款与提醒</text>
+        <view class="pill subtle">Chip / Sheet</view>
+      </view>
+      <view class="field">
+        <view class="label">扣款周期</view>
+        <view class="chip-row">
+          <view
+            wx:for="{{cycleOptions}}"
+            wx:key="value"
+            class="chip {{cycle === item.value ? 'active' : ''}}"
+            data-value="{{item.value}}"
+            bindtap="onCycleTap"
+          >
+            <text class="chip-label">{{item.label}}</text>
+            <text class="chip-desc">{{item.description}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="field">
+        <view class="label">起始日期</view>
+        <picker mode="date" value="{{startDate}}" bindchange="onDateChange">
+          <view class="nb-input picker-value">{{startDate || '选择日期'}}</view>
+        </picker>
+        <text class="hint">Sheet/Drawer 的触发点，选择后计算下次扣款。</text>
+      </view>
+      <view class="field row">
+        <view class="label">提前提醒</view>
+        <view class="reminder-row">
+          <input
+            class="nb-input tiny-input"
+            type="number"
+            value="{{reminderDays}}"
+            bindinput="onReminderInput"
+          />
+          <text class="hint">天</text>
+        </view>
+      </view>
+      <view class="field row">
+        <view class="label">自动扣款</view>
+        <switch checked="{{autopay}}" bindchange="onToggleAutopay" color="#ff5c8d" />
+      </view>
+      <view class="field">
+        <view class="label">备注</view>
+        <textarea
+          class="nb-textarea"
+          placeholder="支付渠道、优惠、子账号等"
+          value="{{notes}}"
+          maxlength="140"
+          bindinput="onNotesInput"
+        ></textarea>
+      </view>
+    </view>
+  </view>
+
+  <view class="nb-card section mini-kit">
+    <view class="section-header">
+      <text class="section-title">表单组件套件</text>
+      <text class="hint">沿用 Button / Input / Tag / Skeleton 的 Neo-Brutalism 形态。</text>
+    </view>
+    <view class="demo-row wrap">
+      <view class="demo-btn square">Button</view>
+      <view class="demo-btn medium">Drawer</view>
+      <view class="demo-btn round">Sheet</view>
+    </view>
+    <view class="demo-row">
+      <view class="neo-input ghost">you@example.com</view>
+      <view class="demo-pill accent">自动扣款</view>
+    </view>
+  </view>
+
+  <view class="cta">
+    <button class="nb-button full" type="button" bindtap="onSubmit">保存订阅</button>
+  </view>
+</view>

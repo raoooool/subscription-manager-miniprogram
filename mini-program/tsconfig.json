@@ -1,8 +1,9 @@
 {
+  "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "target": "ES5",
     "module": "CommonJS",
-    "lib": ["ES2015", "DOM"],
+    "lib": ["ESNext", "DOM"],
     "types": ["miniprogram-api-typings"],
     "baseUrl": "./miniprogram",
     "paths": {
@@ -10,7 +11,7 @@
     },
     "strict": true,
     "noImplicitAny": false,
-    "skipLibCheck": true
+    "composite": true
   },
   "include": ["miniprogram/**/*.ts"],
   "exclude": ["node_modules"]

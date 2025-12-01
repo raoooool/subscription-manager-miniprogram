@@ -1,15 +1,135 @@
-<view class="page">
-  <view class="hero">
-    <text class="eyebrow">WeChat Mini Program</text>
-    <text class="title">订阅管理</text>
-    <text class="subtitle">基础框架已就绪，可在此扩展业务页面与组件。</text>
+<view class="page nb-shell font-sans">
+  <view class="nb-blob nb-blob-a"></view>
+  <view class="nb-blob nb-blob-b"></view>
+  <view class="nb-blob nb-blob-c"></view>
+
+  <view class="nb-card hero-card">
+    <view class="hero-left">
+      <view class="nb-pill dark">Neo · Brutalism UI</view>
+      <text class="title">订阅指挥台</text>
+      <text class="subtitle">用 Button / Card / Input 组件示例重排主页，让状态和操作都保持厚边框与饱和色块。</text>
+      <view class="hero-actions">
+        <view class="nb-button" bindtap="goToAddSubscription">添加订阅</view>
+        <view class="nb-button ghost">组件手册</view>
+      </view>
+      <view class="hero-tags">
+        <view class="nb-tag alt">厚边框</view>
+        <view class="nb-tag warn">跳色投影</view>
+        <view class="nb-tag ghost">即时入口</view>
+      </view>
+      <view class="button-demos">
+        <view class="demo-label">Button 形态</view>
+        <view class="demo-buttons">
+          <view class="demo-btn square">Square</view>
+          <view class="demo-btn medium">Rounded</view>
+          <view class="demo-btn round">Pill</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="hero-right nb-surface">
+      <view class="panel-header">
+        <text class="panel-title">实时面板</text>
+        <view class="pill subtle">neo-brutalism</view>
+      </view>
+      <view class="stat-grid">
+        <block wx:for="{{stats}}" wx:key="label">
+          <view class="stat-card">
+            <view class="stat-label">{{item.label}}</view>
+            <view class="stat-value">{{item.value}}</view>
+            <view class="stat-tag">{{item.tag}}</view>
+          </view>
+        </block>
+      </view>
+      <view class="panel-divider"></view>
+      <view class="panel-form">
+        <view class="panel-input">
+          <view class="demo-label">Input</view>
+          <view class="neo-input">Notion / Apple One</view>
+        </view>
+        <view class="panel-chipset">
+          <view class="demo-label">Tag + Chip</view>
+          <view class="demo-row">
+            <view class="demo-pill">¥29.00</view>
+            <view class="demo-pill ghost">月付</view>
+            <view class="demo-pill accent">自动扣款</view>
+          </view>
+        </view>
+      </view>
+    </view>
   </view>
-  <view class="card">
-    <text class="card-title">接下来可以做什么？</text>
-    <view class="card-body">
-      <text>1. 连接后端 API。</text>
-      <text>2. 补充页面与组件结构。</text>
-      <text>3. 引入状态管理与主题样式。</text>
+
+  <view class="nb-card section">
+    <view class="section-header">
+      <text class="section-title">即将扣款</text>
+      <view class="pill subtle">同步提醒</view>
+    </view>
+    <view class="upcoming-list">
+      <block wx:for="{{upcoming}}" wx:key="name">
+        <view class="upcoming-card">
+          <view class="upcoming-head">
+            <view class="bubble">{{item.name}}</view>
+            <text class="caption">{{item.cycle}}</text>
+          </view>
+          <view class="status-row">
+            <view class="nb-tag alt">{{item.date}}</view>
+            <view class="nb-tag ghost">{{item.autopay ? '自动扣款' : '手动支付'}}</view>
+            <text class="amount">{{item.amount}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view class="nb-card section">
+    <view class="section-header">
+      <text class="section-title">Neo Brutalism 组件</text>
+      <text class="hint">引用 Button、Card、Input、Skeleton 的示例形态，方便复制到其他页面。</text>
+    </view>
+    <view class="kit-badges">
+      <block wx:for="{{kitBadges}}" wx:key="label">
+        <view class="kit-badge {{item.tone}}">{{item.label}}</view>
+      </block>
+    </view>
+    <view class="component-demos">
+      <view class="demo-card">
+        <view class="demo-title">Card + Progress</view>
+        <view class="demo-body">
+          <view class="neo-input ghost">订阅名称</view>
+          <view class="demo-row">
+            <view class="demo-pill">¥68.00</view>
+            <view class="demo-pill ghost">家庭</view>
+          </view>
+          <view class="progress">
+            <view class="progress-bar"></view>
+            <text class="progress-text">92%</text>
+          </view>
+        </view>
+      </view>
+      <view class="demo-card accent">
+        <view class="demo-title">Skeleton + Tag</view>
+        <view class="skeleton-line wide"></view>
+        <view class="skeleton-line"></view>
+        <view class="demo-row space">
+          <view class="nb-tag alt">Drawer</view>
+          <view class="nb-tag ghost">Tooltip</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="nb-card section">
+    <view class="section-header">
+      <text class="section-title">设计提示</text>
+      <view class="pill subtle">粗线条 + 投影</view>
+    </view>
+    <view class="guide-grid">
+      <block wx:for="{{featureBlocks}}" wx:key="title">
+        <view class="guide-card {{item.tone}}">
+          <view class="guide-title">{{item.title}}</view>
+          <view class="guide-desc">{{item.description}}</view>
+        </view>
+      </block>
     </view>
   </view>
 </view>
